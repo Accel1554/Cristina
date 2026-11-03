@@ -24,7 +24,7 @@ function label(){toggle.textContent=song.paused?'♫ Reproducir música':'Ⅱ Pa
 async function play(){try{await song.play()}catch(e){}label()}
 toggle.addEventListener('click',async()=>{if(song.paused)await play();else{song.pause();label()}});
 document.getElementById('openLetter').addEventListener('click',()=>{document.getElementById('carta').scrollIntoView({behavior:'smooth'});play()});
-window.addEventListener('load',play);
+
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
 const hearts=document.getElementById('hearts');function heart(){let e=document.createElement('span');e.className='heart';e.textContent=Math.random()>.5?'♡':'♥';e.style.left=Math.random()*100+'%';e.style.fontSize=(12+Math.random()*16)+'px';e.style.animationDuration=(7+Math.random()*5)+'s';hearts.appendChild(e);setTimeout(()=>e.remove(),12500)}setInterval(heart,1500);
 </script></body></html>
